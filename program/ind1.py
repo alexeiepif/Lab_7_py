@@ -10,11 +10,20 @@ if __name__ == '__main__':
     A = list(map(int, input().split()))
 
     product = 1
-    count = 0
     B = list(filter(lambda x:x > 0 and x % 3 == 0, A))
     count = len(B)
     for num in B:
         product *= num
 
+    print(f"Произведение положительных элементов, кратных 3: {product}")
+    print(f"Количество положительных элементов, кратных 3: {count}")
+
+    product = 1
+    count = 0
+
+    for num in A:
+        if num > 0 and num % 3 == 0:
+            product *= num
+            count += 1
     print(f"Произведение положительных элементов, кратных 3: {product}")
     print(f"Количество положительных элементов, кратных 3: {count}")
