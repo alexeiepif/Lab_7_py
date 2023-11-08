@@ -5,10 +5,15 @@
 # найти произведение положительных элементов кратных 3,
 # их количество и вывести результаты на экран.
 
+import sys
+
+
 if __name__ == '__main__':
     print("Введите список элементов (через пробел):")
     A = list(map(int, input().split()))
-
+    if len(A) != 10:
+        print("Неверный размер списка", file=sys.stderr)
+        exit(1)
     product = 1
     B = list(filter(lambda x:x > 0 and x % 3 == 0, A))
     count = len(B)
