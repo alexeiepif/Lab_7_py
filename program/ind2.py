@@ -9,17 +9,28 @@
 # величина которых находится в интервале [а, b].
 # Освободившиеся в конце списка элементы заполнить нулями.
 
+import math
+import sys
+
+
 if __name__ == '__main__':
-    input_list = [4.5, -2.7, 3.1, 4.2, -5.0, 6.3, 7.4, -8.9, 9.0]
+    print("Введите список неповторяющихся вещественных чисел через пробел")
+    input_list = list(map(float, input().split()))
+    if len(input_list) != len(set(input_list)):
+        print("Есть повторяющиеся элементы", file=sys.stderr)
+        exit(1)
+    print("Также введите интервал [a, b], то есть 2 числа через пробел")
+    a, b = map(float, input().split())
 
     m_index = 0
-    m_value = input_list[0]
+    m_value = math.fabs(input_list[0])
 
     for i, num in enumerate(input_list):
-        abs_value = abs(num)
+        abs_value = math.fabs(num)
         if abs_value < m_value:
             m_index = i
             m_value = abs_value
+
     summ = 0
     negative_found = False
 
@@ -29,8 +40,6 @@ if __name__ == '__main__':
         elif num < 0:
             negative_found = True
 
-    a = -4.0
-    b = 6.0
     ind = 0
     
     for num in input_list.copy():
